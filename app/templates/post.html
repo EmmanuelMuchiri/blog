@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles%}
+{{ super() }}
+<!-- <link rel="stylesheet" href="{{url_for('static',filename='css/post.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/all.css')}}"> -->
+<link
+    href="https://fonts.googleapis.com/css?family=Cabin|Indie+Flower|Montserrat|Neucha|Noto+Serif+JP|Noto+Serif+KR|Roboto+Mono"
+    rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link rel="shortcut icon"
+    href="https://icon2.kisspng.com/20180412/xiw/kisspng-paper-sunset-shimmer-quill-cutie-mark-crusaders-bo-write-5acf53a3231648.3205577215235368031437.jpg">
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+
+<div class="col-md-8">
+
+    <div class="panel">
+        <div class="panel-body">
+            <div class="col-md-10">
+                <div class="text-center">
+                    <h1>{{post.title}}</h1>
+                    <h4>{{post.posted.strftime('%Y-%m-%d')}}/
+                        <a href="#">{{post.category}}</a>/ <a href="/post/{{post.id}}?like=1"></a>
+                        <i class="fas fa-heart"></i>{{post.like}}</a>
+                    </h4>
+                </div>
+
+                <p>{{post.post}}</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+
+
+    <div class="panel panel-body" id="commentheader">
+        <h1 class="text-center">Comments</h1>
+    </div>
+    <br><br>
+    <div class="panel " id="commentsection">
+        <div class="panel-body responsive">
+            {% for comment in comments %}
+            <p>{{comment.comment}}</p>
+            <div class="col-md-6">
+                <a href="/post/{{post.id}}?delete=1">Delete Comment</i></a>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+</div>
+
+
+<div id="commentform" class="panel col-md-12">
+    <div class="panel-body">
+        <h1>Leave a Comment</h1>
+        {{wtf.quick_form(comment_form)}}
+        {{simplemde.load}}
+    </div>
+</div>
+
+
+{% endblock %}

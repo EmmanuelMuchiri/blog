@@ -48,3 +48,26 @@ def new_post():
     title="Make a post"
     return render_template('new_post.html',title=title,post_form=form)
 
+@main.route("/post/<int:id>",methods=['GET','POST'])
+def post(id):
+    post=Post.query.get_or_404(id)
+    comment = Comment.query.all()
+    form=CommentForm()
+
+    if request.args.get("like"):
+        post.like = post.like+1
+
+        db.session.add(post)
+        db.session.commit()
+
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    if form.validate_on_submit():
+        comment=form.comment.data
+        new_comment = Comment(id=id,comment=comment,user_id=current_user.id,post_id=post.id)
+
+        new_comment.save_comment()
+
+        return redirect("/post/{post_id}".format(post_id=post.id))
+
+    return render_template('post.html',post=post,comments=comment,comment_form=form)
