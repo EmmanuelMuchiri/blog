@@ -1,0 +1,4 @@
+Dear {{user.username}}
+Welcome to Blog Kali
+We have just seen you have signed up for our application and want to welcome you to the family. 
+Feel Free to pitch your idea with us.
