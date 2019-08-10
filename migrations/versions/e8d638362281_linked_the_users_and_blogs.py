@@ -1,8 +1,8 @@
-"""created the schema
+"""linked the users and blogs
 
-Revision ID: 7dcba33e907d
+Revision ID: e8d638362281
 Revises: 
-Create Date: 2019-08-10 14:51:24.194430
+Create Date: 2019-08-10 22:04:50.433196
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7dcba33e907d'
+revision = 'e8d638362281'
 down_revision = None
 branch_labels = None
 depends_on = None
