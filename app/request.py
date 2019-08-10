@@ -1,5 +1,8 @@
 import urllib.request,json
 
+def configure_request(app):
+    pass
+
 def get_quote():
    '''
    Function that gets the json response to our url request
