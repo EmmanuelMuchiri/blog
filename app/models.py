@@ -16,22 +16,16 @@ def load_user(user_id):
 
 
 class User(UserMixin,db.Model):
-    """ class modelling the users """
-
-    __tablename__='users'
-
-    #create the columns
-    id = db.Column(db.Integer,primary_key = True)
+    __tablename__ = 'users'
+    
+    id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255))
-    email = db.Column(db.String(255),unique = True, index =True)
-    password_hash = db.Column(db.String(255))
-    pass_secure = db.Column(db.String(255))
+    email = db.Column(db.String(255),unique = True,index = True)
+    role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    # pitches = db.relationship("Pitch", backref="user", lazy = "dynamic")
-    # comment = db.relationship("Comments", backref="user", lazy = "dynamic")
-    # vote = db.relationship("Votes", backref="user", lazy = "dynamic")
-    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    pass_secure = db.Column(db.String(255))
+    # reviews = db.relationship('Review',backref = 'user',lazy = "dynamic")
 
     # securing passwords
     @property
