@@ -1,0 +1,7 @@
+Hello {{user.username}}
+Welcome to My Blog!
+You have just been registered as an admin you can do the following:
+* Adding Posts
+* Deleting Posts
+* Deleting Comments
+* Adding Admins
