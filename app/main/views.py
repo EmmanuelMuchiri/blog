@@ -47,3 +47,4 @@ def new_post():
 
     title="Make a post"
     return render_template('new_post.html',title=title,post_form=form)
+
