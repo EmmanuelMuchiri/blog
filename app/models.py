@@ -28,9 +28,9 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    pitches = db.relationship("Pitch", backref="user", lazy = "dynamic")
-    comment = db.relationship("Comments", backref="user", lazy = "dynamic")
-    vote = db.relationship("Votes", backref="user", lazy = "dynamic")
+    # pitches = db.relationship("Pitch", backref="user", lazy = "dynamic")
+    # comment = db.relationship("Comments", backref="user", lazy = "dynamic")
+    # vote = db.relationship("Votes", backref="user", lazy = "dynamic")
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
 
     # securing passwords
