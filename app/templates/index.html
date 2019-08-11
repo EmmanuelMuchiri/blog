@@ -14,22 +14,53 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Favourite Quotes</title>
 </head>
+
 <body>
     <div class="container jumbotron text-center">
         <p>{{quote.quote}}</p>
         <p>{{quote.author}}</p>
     </div>
-    <div class="container jumbotron text-center">
+    <!-- <div class="container jumbotron text-center">
         <a href="/new_post" class="btn btn-success btn-lg btn-block" >New Post</a>
     </div>
-    
+    <div class="container jumbotron text-center">
+            <a href="/new_post" class="btn btn-danger btn-lg btn-block" >Delete A Post</a>
+        </div> -->
+
+    <div class="col-md-8">
+    {% for post in posts %}
+
+    <div class="panel">
+        <div class="panel-body responsive">
+            <div class="col-md-8">
+                <div class="text-center">
+                    <h1>{{post.title}}</h1>
+                    <h4>{{post.posted.strftime('%Y-%m-%d')}}/ <a href="#">{{post.category}}</a></h4>
+                </div>
+                <br>
+
+                <p>{{post.post|truncate(350)}}</p>
+                <div class="text-center">
+                    <a href="/post/{{post.id}}">CONTINUE READING...</a>
+                </div>
+            </div>
+            <!-- <div id="img" class="col-md-4">
+                <img src="{{url_for('static',filename='css/halloween.jpg')}}" class="img-rounded img-responsive">
+            </div> -->
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
 </body>
+
 </html>
 
 {% endblock %}
