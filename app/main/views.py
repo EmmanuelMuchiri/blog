@@ -6,7 +6,7 @@ from ..models import User,Post,Role,Subscriber,Comment
 from flask_login import login_required,current_user
 import markdown2
 from ..email import mail_message
-# from ..request import get_quote
+from ..request import get_quote
 
 @main.route("/",methods=['GET','POST'])
 def index():
@@ -24,7 +24,11 @@ def index():
         mail_message("Subscription Received","email/welcome_subscriber",new_subscriber.email,subscriber=new_subscriber)
 
     title = "Welcome to My Blog"
-    return render_template('index.html',title=title,posts=posts,subscriber_form=form)
+    
+    name  = "Quote"
+    quote = get_quote()
+    
+    return render_template('index.html',title=title,posts=posts,subscriber_form=form,name=name,quote=quote)
 
 @main.route('/user/<uname>')
 @login_required

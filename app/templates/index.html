@@ -15,6 +15,11 @@
 
 {% block content %}
 
+  <div class="container jumbotron text-center">
+    <p>{{quote.quote}}</p>
+    <p>{{quote.author}}</p>
+</div>
+
 
 <div class="col-md-8">
   {% for post in posts %}
