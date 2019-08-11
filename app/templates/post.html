@@ -9,8 +9,6 @@
     rel="stylesheet">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
     integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-<link rel="shortcut icon"
-    href="https://icon2.kisspng.com/20180412/xiw/kisspng-paper-sunset-shimmer-quill-cutie-mark-crusaders-bo-write-5acf53a3231648.3205577215235368031437.jpg">
 {% endblock %}
 
 {% block content %}
@@ -41,7 +39,7 @@
         <h1 class="text-center">Comments</h1>
     </div>
     <br><br>
-    <div class="panel " id="commentsection">
+    <div class="panel">
         <div class="panel-body responsive">
             {% for comment in comments %}
             <p>{{comment.comment}}</p>
