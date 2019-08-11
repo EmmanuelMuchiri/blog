@@ -8,13 +8,24 @@ import markdown2
 from ..email import mail_message
 from ..request import get_quote
 
-@main.route('/')
+@main.route('/',methods=['GET','POST'])
 def index():
 
     name  = "Quote"
     quote = get_quote()
+    posts = Post.query.all()
+    form = SubscriberForm()
+    if form.validate_on_submit():
+        email = form.email.data
+
+        new_subscriber=Subscriber(email=email)
+        new_subscriber.save_subscriber()
+
+        mail_message("Subscription Received","email/welcome_subscriber",new_subscriber.email,subscriber=new_subscriber)
+
+    title = "Welcome to My Blog"
     
-    return render_template('index.html',name = name,quote = quote)
+    return render_template('index.html',name = name,quote = quote,title=title,subscriber_form=form)
 
 @main.route('/user/<uname>')
 @login_required
