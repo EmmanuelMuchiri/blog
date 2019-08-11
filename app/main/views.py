@@ -6,13 +6,13 @@ from ..models import User,Post,Role,Subscriber,Comment
 from flask_login import login_required,current_user
 import markdown2
 from ..email import mail_message
-from ..request import get_quote
+# from ..request import get_quote
 
-@main.route('/',methods=['GET','POST'])
+@main.route("/",methods=['GET','POST'])
 def index():
-
-    name  = "Quote"
-    quote = get_quote()
+    """
+    View root page function that returns the index page and its data
+    """
     posts = Post.query.all()
     form = SubscriberForm()
     if form.validate_on_submit():
@@ -24,8 +24,7 @@ def index():
         mail_message("Subscription Received","email/welcome_subscriber",new_subscriber.email,subscriber=new_subscriber)
 
     title = "Welcome to My Blog"
-    
-    return render_template('index.html',name = name,quote = quote,title=title,subscriber_form=form)
+    return render_template('index.html',title=title,posts=posts,subscriber_form=form)
 
 @main.route('/user/<uname>')
 @login_required
